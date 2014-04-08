@@ -1,3 +1,6 @@
+class Board
+end
+
 class Piece
 
   def initialize(color, board, position)
@@ -96,6 +99,17 @@ class King < SteppingPiece
     super
   end
 
+  def moves
+    (diagonal_moves + orthogonal_moves).select do |move_pos|
+      new_x, new_y = move_pos
+      cur_x, cur_y = @position
+
+      unless move_pos == @position
+        (new_x - cur_x).between?(-1, 1) && (new_y - cur_y).between?(-1, 1)
+      end
+    end.uniq
+  end
+
 end
 
 class Knight < SteppingPiece
@@ -104,6 +118,17 @@ class Knight < SteppingPiece
     super
   end
 
+  def moves
+    knight_changes = [[1, 2], [-1, -2], [1, -2], [-1, 2],
+                      [2, 1], [2, -1], [-2, 1], [-2, -1]]
+
+    knight_changes.map do |move_pos|
+      new_x, new_y = move_pos
+      cur_x, cur_y = @position
+
+      [(new_x + cur_x), (new_y + cur_y)]
+    end
+  end
 end
 
 class Pawn < Piece
