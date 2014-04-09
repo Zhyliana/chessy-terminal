@@ -10,7 +10,3 @@ k = Knight.new("black", b, [4, 4])
 
 r = Rook.new("black", b, [4,4])
 
-<<<<<<< HEAD
-=======
-p r.moves
->>>>>>> 5313fa6d83a6c5e647181c84a5b70fa37d6e8389

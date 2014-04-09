@@ -25,6 +25,7 @@ class Piece
 
   def diagonal_moves
     x, y = @position
+    
     diagonal_moves = []
 
     (0..7).to_a.each do |delta|
