@@ -1,15 +1,13 @@
-class Board
-end
+require 'colorize'
 
 class Piece
+
+  attr_accessor :color, :position, :char
 
   def initialize(color, board, position)
     @color = color
     @board = board
     @position = position
-  end
-
-  def moves
   end
 
   def orthogonal_moves
@@ -39,102 +37,9 @@ class Piece
     diagonal_moves
   end
 
-end
-
-class SlidingPiece < Piece
-
-  def initialize(color, board, position)
-    super
-  end
-
-end
-
-class Bishop < SlidingPiece
-
-  def initialize(color, board, position)
-    super
-  end
-
-  def moves
-    diagonal_moves
-  end
-
-end
-
-class Rook < SlidingPiece
-
-  def initialize(color, board, position)
-    super
-  end
-
-  def moves
-    orthogonal_moves
-  end
-
-end
-
-class Queen < SlidingPiece
-
-  def initialize(color, board, position)
-    super
-  end
-
-  def moves
-    diagonal_moves + orthogonal_moves
-  end
-
-end
-
-class SteppingPiece < Piece
-
-  def initialize(color, board, position)
-    super
-  end
-
-end
-
-class King < SteppingPiece
-
-  def initialize(color, board, position)
-    super
-  end
-
-  def moves
-    (diagonal_moves + orthogonal_moves).select do |move_pos|
-      new_x, new_y = move_pos
-      cur_x, cur_y = @position
-
-      unless move_pos == @position
-        (new_x - cur_x).between?(-1, 1) && (new_y - cur_y).between?(-1, 1)
-      end
-    end.uniq
-  end
-
-end
-
-class Knight < SteppingPiece
-
-  def initialize(color, board, position)
-    super
-  end
-
-  def moves
-    knight_changes = [[1, 2], [-1, -2], [1, -2], [-1, 2],
-                      [2, 1], [2, -1], [-2, 1], [-2, -1]]
-
-    knight_changes.map do |move_pos|
-      new_x, new_y = move_pos
-      cur_x, cur_y = @position
-
-      [(new_x + cur_x), (new_y + cur_y)]
-    end
-  end
-end
-
-class Pawn < Piece
-
-  def initialize(color, board, position)
-    super
-  end
+  # def move_into_check?(position)
+  #   check_board = @board.dup
+  #   in_check?(position)
+  # end
 
 end
