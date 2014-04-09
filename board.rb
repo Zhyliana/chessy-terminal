@@ -11,7 +11,11 @@ class Board
   end
 
   def in_check?(color)
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 5313fa6d83a6c5e647181c84a5b70fa37d6e8389
     @grid.each do |row|
       row.each do |tile|
         if tile.is_a?(King) && tile.color == color
@@ -19,9 +23,15 @@ class Board
         end
       end
     end
+<<<<<<< HEAD
       
     #returns position of king of given color
   
+=======
+
+    #returns position of king of given color
+
+>>>>>>> 5313fa6d83a6c5e647181c84a5b70fa37d6e8389
   end
 
   def load_board
@@ -111,8 +121,14 @@ class Board
 
 end
 
+<<<<<<< HEAD
 
 Board.new.render
 
+=======
+b = Board.new
+
+p b.in_check?("Black")
+>>>>>>> 5313fa6d83a6c5e647181c84a5b70fa37d6e8389
 
 
